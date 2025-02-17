@@ -17,7 +17,7 @@ S3 Debug Tool is a utility designed to simplify debugging and testing interactio
 
    ```bash
    git clone git@github.com:kirillVladov/s3-debugger.git
-   cd s3-debug-tool
+   cd s3-debugger
 2. Setup .env file
 
       ```bash
