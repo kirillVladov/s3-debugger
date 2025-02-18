@@ -45,7 +45,8 @@ func (a *App) Run() {
 		MaxKeys: a.config.GettingCount,
 	})
 
-	for object := range listObjects {
+	for i := 0; i < a.config.GettingCount; i++ {
+		object := <-listObjects
 		startTime := time.Now()
 
 		_, err := a.minioClient.GetObject(
@@ -60,7 +61,7 @@ func (a *App) Run() {
 			continue
 		}
 
-		fmt.Printf("Time: %v, Key: %s \n", time.Since(startTime), object.Key)
+		fmt.Printf("Time: %v, Key: %s, Size: %v bytes \n", time.Since(startTime), object.Key, object.Size)
 	}
 
 	a.Shutdown(ctx)
